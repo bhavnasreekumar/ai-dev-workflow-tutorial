@@ -31,13 +31,26 @@ The first browser capture preceded rendering; the subsequent live DOM check pass
 Chrome's screenshot output was blank, so visual pixel inspection was unavailable;
 the heading and absence of app alerts were verified from the rendered DOM.
 
-## M2 — Data loading and basic structure
+## M2 — Data loading and basic structure — In progress
 
 Commit:
 
-- [ ] Load `data/sales-data.csv`; validate the required columns and parse dates, numeric values, and categorical values correctly.
+- [x] Load `data/sales-data.csv`; validate the required columns and parse dates, numeric values, and categorical values correctly.
 - [ ] Prepare sales totals, transaction counts, and time/category/region aggregations from the CSV.
 - [ ] Create the dashboard layout: prominent KPI cards, a sales trend chart, and category/region charts side by side.
+
+Task 2 verification (2026-09-16): the initial pytest run failed with
+`ModuleNotFoundError: No module named 'sales_data'`, as expected before implementation.
+After adding the loader and connecting the app, `venv/bin/python -m pytest -q`
+passed all 18 tests. Headless Chrome confirmed the caption
+"Sales recorded from January 03, 2024 to December 31, 2024" with no app error
+or warning elements. The source CSV is unchanged. The local server and temporary
+browser were stopped after verification. Starting the server required approval
+to open a local port; Streamlit printed its optional Watchdog performance suggestion.
+
+M2 remains **In progress**: Task 2 completes loading and validation only.
+Its aggregation and full-layout criteria depend on implementation Tasks 3–5.
+Stopped before Task 3 for user review.
 
 ## M3 — KPI cards implementation
 
