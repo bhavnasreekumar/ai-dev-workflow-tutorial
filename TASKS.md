@@ -4,12 +4,35 @@ Source: [Product requirements](prd/ecommerce-analytics.md). Scope: Phase 1 sales
 
 All tasks start as **To do**. Mark a task `[x]` when its checks pass; add **In progress** beside the task you are working on.
 
-## M1 — Environment setup and project initialization
+## Definition of Done
+
+A milestone is complete when its acceptance criteria are met, the app runs locally with `streamlit run app.py`, and changes are committed with the milestone ID in the commit message.
+
+## M1 — Environment setup and project initialization — In progress
+
+Commit:
 
 - [ ] Set up Python 3.11+ with Streamlit, Pandas, and Plotly; record dependencies and local run instructions.
 - [ ] Initialize a simple, readable project structure with a Streamlit entry point.
 
+Verification (2026-09-16): Python 3.14.7; Streamlit 1.64.0, Pandas 3.0.5,
+Plotly 6.9.0, pytest 9.1.1. Installation succeeded and `pip check` reported
+no broken requirements. Git ignores `venv/`, `.pytest_cache/`, and `__pycache__/`.
+The local server health check returned `ok`. Headless Chrome opened
+`http://127.0.0.1:8501/` and confirmed the document title and rendered heading
+were "ShopSmart Sales Dashboard", with no Streamlit error or warning elements.
+No project tests exist yet; they arrive in M2.
+
+Environment notes: the sandbox initially blocked PyPI access and local server/browser
+connections; approved retries succeeded. Pip disabled its unwritable cache inside
+the sandbox. Streamlit printed an optional Watchdog performance suggestion.
+The first browser capture preceded rendering; the subsequent live DOM check passed.
+Chrome's screenshot output was blank, so visual pixel inspection was unavailable;
+the heading and absence of app alerts were verified from the rendered DOM.
+
 ## M2 — Data loading and basic structure
+
+Commit:
 
 - [ ] Load `data/sales-data.csv`; validate the required columns and parse dates, numeric values, and categorical values correctly.
 - [ ] Prepare sales totals, transaction counts, and time/category/region aggregations from the CSV.
@@ -17,18 +40,26 @@ All tasks start as **To do**. Mark a task `[x]` when its checks pass; add **In p
 
 ## M3 — KPI cards implementation
 
+Commit:
+
 - [ ] Display Total Sales (sum of `total_amount`) and Total Orders (transaction count) prominently, with currency formatting and thousands separators. **Acceptance: KPIs visible.**
 
 ## M4 — Sales trend chart
+
+Commit:
 
 - [ ] Show correctly aggregated daily or monthly sales in a line chart, with time and sales axes, clear labels, and tooltips showing exact values. **Acceptance: Trend chart works.**
 
 ## M5 — Category and region breakdowns
 
+Commit:
+
 - [ ] Show every category in a sales bar chart, sorted highest to lowest, with clear labels and exact-value tooltips. **Acceptance: Category chart works.**
 - [ ] Show every region in a sales bar chart, sorted highest to lowest, with clear labels and exact-value tooltips. **Acceptance: Region chart works.**
 
 ## M6 — Testing and refinement
+
+Commit:
 
 - [ ] Verify every KPI and chart aggregation against calculations from the CSV. Sample expectations: 482 orders, approximately $116,500 in sales, Electronics as top category, five categories, and North/South/East/West regions. Use CSV calculations for exact values. **Acceptance: Data loads correctly.**
 - [ ] Run the dashboard and resolve errors and warnings. **Acceptance: No errors.**
@@ -38,6 +69,8 @@ All tasks start as **To do**. Mark a task `[x]` when its checks pass; add **In p
 - [ ] Review code for readable, modular Python and helpful comments.
 
 ## M7 — Deployment to Streamlit Community Cloud
+
+Commit:
 
 - [ ] Deploy the dashboard to Streamlit Community Cloud with the required dependencies and CSV available.
 - [ ] Verify the public dashboard loads and its KPIs and charts work; record the shareable URL for stakeholder review.

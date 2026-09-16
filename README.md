@@ -111,3 +111,26 @@ Open [pre-work-setup.md](pre-work-setup.md) and work through it first, then cont
 ## License
 
 This tutorial is provided for educational purposes.
+
+## Run the sales dashboard
+
+You need Python 3.11 or newer. From this project's directory, run:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+python -m pip install -r requirements.txt
+streamlit run app.py
+# Once tests exist:
+python -m pytest -q
+```
+
+On Windows, replace the activation command with `venv\Scripts\activate`.
+Open the local URL printed by Streamlit. Press Ctrl+C in the terminal to stop the server.
+
+The app currently shows its title only: **ShopSmart Sales Dashboard**.
+Test files arrive in M2; there are no project tests to run yet.
+
+Task 1 environment: Python 3.14.7, Streamlit 1.64.0, Pandas 3.0.5,
+Plotly 6.9.0, and pytest 9.1.1. These four package versions are pinned in
+`requirements.txt`; `python -m pip check` reported no broken requirements.
