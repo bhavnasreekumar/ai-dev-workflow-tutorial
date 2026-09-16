@@ -68,3 +68,10 @@ def load_sales_data(path: str | Path) -> pd.DataFrame:
 
 def calculate_kpis(data: pd.DataFrame) -> tuple[float, int]:
     return float(data["total_amount"].sum()), len(data)
+
+
+def monthly_sales(data: pd.DataFrame) -> pd.DataFrame:
+    return (
+        data.set_index("date")["total_amount"]
+        .resample("MS").sum().reset_index()
+    )

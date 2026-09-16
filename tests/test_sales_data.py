@@ -3,7 +3,7 @@ import csv
 import pandas as pd
 import pytest
 
-from sales_data import SalesDataError, calculate_kpis, load_sales_data
+from sales_data import SalesDataError, calculate_kpis, load_sales_data, monthly_sales
 
 
 COLUMNS = [
@@ -89,3 +89,14 @@ def test_kpis_count_transactions_and_use_recorded_amounts():
     sales, orders = calculate_kpis(data)
     assert sales == pytest.approx(31.00, abs=0.001)
     assert orders == 3
+
+
+def test_monthly_sales_orders_years_and_fills_missing_months():
+    data = pd.DataFrame({
+        "date": pd.to_datetime(["2025-01-03", "2024-01-20", "2024-01-02"]),
+        "total_amount": [30.0, 10.25, 0.75],
+    })
+    result = monthly_sales(data)
+    assert result["date"].tolist() == list(pd.date_range("2024-01-01", "2025-01-01", freq="MS"))
+    assert result["total_amount"].tolist() == [11.0] + [0.0] * 11 + [30.0]
+    assert result["total_amount"].sum() == pytest.approx(41.0, abs=0.001)

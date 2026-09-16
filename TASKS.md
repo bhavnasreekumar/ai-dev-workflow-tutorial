@@ -50,7 +50,8 @@ to open a local port; Streamlit printed its optional Watchdog performance sugges
 
 M2 remains **In progress**: Task 2 completes loading and validation only.
 Task 3 adds sales totals, transaction counts, and KPI cards.
-The remaining time/category/region aggregations and charts depend on Tasks 4–5.
+Task 4 adds monthly aggregation and the sales trend.
+The remaining category/region aggregations and charts depend on Task 5.
 
 ## M3 — KPI cards implementation — Done
 
@@ -68,11 +69,23 @@ The source CSV is unchanged. The local server and temporary browser were stopped
 The server required approval to open its local port and printed the optional
 Watchdog performance suggestion. Stopped before Task 4 for user review.
 
-## M4 — Sales trend chart
+## M4 — Sales trend chart — In progress
 
 Commit:
 
 - [ ] Show correctly aggregated daily or monthly sales in a line chart, with time and sales axes, clear labels, and tooltips showing exact values. **Acceptance: Trend chart works.**
+
+Task 4 verification (2026-09-16): the monthly test first failed because
+`monthly_sales` did not exist. After implementation, `venv/bin/python -m pytest -q`
+passed all 20 tests, including chronological grouping across years, zero-filled
+intervening months, and preservation of total sales.
+Headless Chrome confirmed 12 points from January through December 2024, labeled
+Month and Sales ($) axes, and no app error or warning elements. All 12 plotted
+values and mouse-hover dollar/cents labels matched independent CSV sums using
+Python's standard-library CSV reader and Decimal arithmetic.
+The source CSV is unchanged. The local server and temporary browser were stopped.
+Starting the server required approval to open its local port; Streamlit printed
+the optional Watchdog performance suggestion. Stopped before Task 5 for review.
 
 ## M5 — Category and region breakdowns
 
