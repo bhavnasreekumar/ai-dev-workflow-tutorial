@@ -2,7 +2,7 @@
 
 Date: 2026-09-15
 
-Status: Design sections approved in conversation; written specification awaiting review. Implementation has not started.
+Status: Written specification approved by the user. Implementation has not started.
 
 ## Purpose and scope
 
