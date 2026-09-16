@@ -31,13 +31,15 @@ The first browser capture preceded rendering; the subsequent live DOM check pass
 Chrome's screenshot output was blank, so visual pixel inspection was unavailable;
 the heading and absence of app alerts were verified from the rendered DOM.
 
-## M2 — Data loading and basic structure — In progress
+## M2 — Data loading and basic structure — Done
 
-Commit: `27cac03` — M2: load and validate sales CSV (Task 2; milestone still in progress)
+Commit: `bd81731` — M5 M2: complete breakdown charts and dashboard structure
+
+Earlier loading commit: `27cac03` — M2: load and validate sales CSV
 
 - [x] Load `data/sales-data.csv`; validate the required columns and parse dates, numeric values, and categorical values correctly.
-- [ ] Prepare sales totals, transaction counts, and time/category/region aggregations from the CSV.
-- [ ] Create the dashboard layout: prominent KPI cards, a sales trend chart, and category/region charts side by side.
+- [x] Prepare sales totals, transaction counts, and time/category/region aggregations from the CSV.
+- [x] Create the dashboard layout: prominent KPI cards, a sales trend chart, and category/region charts side by side.
 
 Task 2 verification (2026-09-16): the initial pytest run failed with
 `ModuleNotFoundError: No module named 'sales_data'`, as expected before implementation.
@@ -48,7 +50,7 @@ or warning elements. The source CSV is unchanged. The local server and temporary
 browser were stopped after verification. Starting the server required approval
 to open a local port; Streamlit printed its optional Watchdog performance suggestion.
 
-M2 remains **In progress**: Task 2 completes loading and validation only.
+M2 is **Done**: Task 2 provides loading and validation.
 Task 3 adds sales totals, transaction counts, and KPI cards.
 Task 4 adds monthly aggregation and the sales trend.
 Task 5 adds category/region aggregations and charts, completing the required structure.
@@ -87,12 +89,12 @@ The source CSV is unchanged. The local server and temporary browser were stopped
 Starting the server required approval to open its local port; Streamlit printed
 the optional Watchdog performance suggestion. Stopped before Task 5 for review.
 
-## M5 — Category and region breakdowns — In progress
+## M5 — Category and region breakdowns — Done
 
-Commit:
+Commit: `bd81731` — M5 M2: complete breakdown charts and dashboard structure
 
-- [ ] Show every category in a sales bar chart, sorted highest to lowest, with clear labels and exact-value tooltips. **Acceptance: Category chart works.**
-- [ ] Show every region in a sales bar chart, sorted highest to lowest, with clear labels and exact-value tooltips. **Acceptance: Region chart works.**
+- [x] Show every category in a sales bar chart, sorted highest to lowest, with clear labels and exact-value tooltips. **Acceptance: Category chart works.**
+- [x] Show every region in a sales bar chart, sorted highest to lowest, with clear labels and exact-value tooltips. **Acceptance: Region chart works.**
 
 Task 5 verification (2026-09-16): the breakdown test first failed because the
 new functions did not exist. After implementation, `venv/bin/python -m pytest -q`
