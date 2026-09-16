@@ -49,14 +49,24 @@ browser were stopped after verification. Starting the server required approval
 to open a local port; Streamlit printed its optional Watchdog performance suggestion.
 
 M2 remains **In progress**: Task 2 completes loading and validation only.
-Its aggregation and full-layout criteria depend on implementation Tasks 3–5.
-Stopped before Task 3 for user review.
+Task 3 adds sales totals, transaction counts, and KPI cards.
+The remaining time/category/region aggregations and charts depend on Tasks 4–5.
 
-## M3 — KPI cards implementation
+## M3 — KPI cards implementation — In progress
 
 Commit:
 
 - [ ] Display Total Sales (sum of `total_amount`) and Total Orders (transaction count) prominently, with currency formatting and thousands separators. **Acceptance: KPIs visible.**
+
+Task 3 verification (2026-09-16): the KPI test first failed because
+`calculate_kpis` did not exist. After implementation, `venv/bin/python -m pytest -q`
+passed all 19 tests. The new test confirms duplicate order IDs still count as
+separate transactions and sales use recorded amounts rather than quantity × price.
+Headless Chrome confirmed Total Sales `$116,500.21` and Total Orders `482`
+in side-by-side cards with 36px values and no app error or warning elements.
+The source CSV is unchanged. The local server and temporary browser were stopped.
+The server required approval to open its local port and printed the optional
+Watchdog performance suggestion. Stopped before Task 4 for user review.
 
 ## M4 — Sales trend chart
 

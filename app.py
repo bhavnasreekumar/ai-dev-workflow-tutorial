@@ -2,7 +2,7 @@ from pathlib import Path
 
 import streamlit as st
 
-from sales_data import SalesDataError, load_sales_data
+from sales_data import SalesDataError, calculate_kpis, load_sales_data
 
 st.set_page_config(page_title="ShopSmart Sales Dashboard", layout="wide")
 st.title("ShopSmart Sales Dashboard")
@@ -16,3 +16,8 @@ except SalesDataError as error:
 start = data["date"].min().strftime("%B %d, %Y")
 end = data["date"].max().strftime("%B %d, %Y")
 st.caption(f"Sales recorded from {start} to {end}")
+
+total_sales, total_orders = calculate_kpis(data)
+sales_column, orders_column = st.columns(2)
+sales_column.metric("Total Sales", f"${total_sales:,.2f}")
+orders_column.metric("Total Orders", f"{total_orders:,}")

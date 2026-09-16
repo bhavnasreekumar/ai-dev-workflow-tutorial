@@ -64,3 +64,7 @@ def load_sales_data(path: str | Path) -> pd.DataFrame:
             raise SalesDataError(f"Invalid {column} in record {number}. Use {rule}.")
         data[column] = values
     return data
+
+
+def calculate_kpis(data: pd.DataFrame) -> tuple[float, int]:
+    return float(data["total_amount"].sum()), len(data)

@@ -3,7 +3,7 @@ import csv
 import pandas as pd
 import pytest
 
-from sales_data import SalesDataError, load_sales_data
+from sales_data import SalesDataError, calculate_kpis, load_sales_data
 
 
 COLUMNS = [
@@ -78,3 +78,14 @@ def test_unclosed_quote(tmp_path):
 def test_extra_columns_are_ignored(tmp_path):
     path = write_csv(tmp_path, [VALID_ROW + ["note"]], COLUMNS + ["notes"])
     assert list(load_sales_data(path).columns) == COLUMNS
+
+
+def test_kpis_count_transactions_and_use_recorded_amounts():
+    data = pd.DataFrame({
+        "order_id": ["same", "same", "other"],
+        "quantity": [1, 1, 1], "unit_price": [999, 999, 999],
+        "total_amount": [10.25, 20.50, 0.25],
+    })
+    sales, orders = calculate_kpis(data)
+    assert sales == pytest.approx(31.00, abs=0.001)
+    assert orders == 3
