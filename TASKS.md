@@ -33,7 +33,7 @@ the heading and absence of app alerts were verified from the rendered DOM.
 
 ## M2 — Data loading and basic structure — In progress
 
-Commit:
+Commit: `27cac03` — M2: load and validate sales CSV (Task 2; milestone still in progress)
 
 - [x] Load `data/sales-data.csv`; validate the required columns and parse dates, numeric values, and categorical values correctly.
 - [ ] Prepare sales totals, transaction counts, and time/category/region aggregations from the CSV.
