@@ -8,12 +8,12 @@ All tasks start as **To do**. Mark a task `[x]` when its checks pass; add **In p
 
 A milestone is complete when its acceptance criteria are met, the app runs locally with `streamlit run app.py`, and changes are committed with the milestone ID in the commit message.
 
-## M1 — Environment setup and project initialization — In progress
+## M1 — Environment setup and project initialization — Done
 
-Commit:
+Commit: `6e79b35` — M1: set up runnable Streamlit project
 
-- [ ] Set up Python 3.11+ with Streamlit, Pandas, and Plotly; record dependencies and local run instructions.
-- [ ] Initialize a simple, readable project structure with a Streamlit entry point.
+- [x] Set up Python 3.11+ with Streamlit, Pandas, and Plotly; record dependencies and local run instructions.
+- [x] Initialize a simple, readable project structure with a Streamlit entry point.
 
 Verification (2026-09-16): Python 3.14.7; Streamlit 1.64.0, Pandas 3.0.5,
 Plotly 6.9.0, pytest 9.1.1. Installation succeeded and `pip check` reported
@@ -21,7 +21,8 @@ no broken requirements. Git ignores `venv/`, `.pytest_cache/`, and `__pycache__/
 The local server health check returned `ok`. Headless Chrome opened
 `http://127.0.0.1:8501/` and confirmed the document title and rendered heading
 were "ShopSmart Sales Dashboard", with no Streamlit error or warning elements.
-No project tests exist yet; they arrive in M2.
+No project tests exist yet; they arrive in M2. The task's local server and temporary
+browser sessions were stopped after verification.
 
 Environment notes: the sandbox initially blocked PyPI access and local server/browser
 connections; approved retries succeeded. Pip disabled its unwritable cache inside
