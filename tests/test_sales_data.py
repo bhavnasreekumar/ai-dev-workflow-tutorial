@@ -3,7 +3,14 @@ import csv
 import pandas as pd
 import pytest
 
-from sales_data import SalesDataError, calculate_kpis, load_sales_data, monthly_sales
+from sales_data import (
+    SalesDataError,
+    calculate_kpis,
+    load_sales_data,
+    monthly_sales,
+    sales_by_category,
+    sales_by_region,
+)
 
 
 COLUMNS = [
@@ -100,3 +107,17 @@ def test_monthly_sales_orders_years_and_fills_missing_months():
     assert result["date"].tolist() == list(pd.date_range("2024-01-01", "2025-01-01", freq="MS"))
     assert result["total_amount"].tolist() == [11.0] + [0.0] * 11 + [30.0]
     assert result["total_amount"].sum() == pytest.approx(41.0, abs=0.001)
+
+
+@pytest.mark.parametrize("column,function", [
+    ("category", sales_by_category), ("region", sales_by_region),
+])
+def test_breakdowns_include_all_groups_and_sort_ties(column, function):
+    data = pd.DataFrame({
+        column: ["Zeta", "Beta", "Alpha", "Beta"],
+        "total_amount": [20.0, 4.0, 10.0, 6.0],
+    })
+    result = function(data)
+    assert result[column].tolist() == ["Zeta", "Alpha", "Beta"]
+    assert result["total_amount"].tolist() == [20.0, 10.0, 10.0]
+    assert result["total_amount"].sum() == pytest.approx(40.0, abs=0.001)

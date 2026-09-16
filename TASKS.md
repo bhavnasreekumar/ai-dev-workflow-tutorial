@@ -51,7 +51,7 @@ to open a local port; Streamlit printed its optional Watchdog performance sugges
 M2 remains **In progress**: Task 2 completes loading and validation only.
 Task 3 adds sales totals, transaction counts, and KPI cards.
 Task 4 adds monthly aggregation and the sales trend.
-The remaining category/region aggregations and charts depend on Task 5.
+Task 5 adds category/region aggregations and charts, completing the required structure.
 
 ## M3 — KPI cards implementation — Done
 
@@ -87,12 +87,27 @@ The source CSV is unchanged. The local server and temporary browser were stopped
 Starting the server required approval to open its local port; Streamlit printed
 the optional Watchdog performance suggestion. Stopped before Task 5 for review.
 
-## M5 — Category and region breakdowns
+## M5 — Category and region breakdowns — In progress
 
 Commit:
 
 - [ ] Show every category in a sales bar chart, sorted highest to lowest, with clear labels and exact-value tooltips. **Acceptance: Category chart works.**
 - [ ] Show every region in a sales bar chart, sorted highest to lowest, with clear labels and exact-value tooltips. **Acceptance: Region chart works.**
+
+Task 5 verification (2026-09-16): the breakdown test first failed because the
+new functions did not exist. After implementation, `venv/bin/python -m pytest -q`
+passed all 22 tests, covering all groups, descending totals, and alphabetical ties.
+Headless Chrome confirmed five categories (Electronics first) and four regions
+(North first), descending visual order, labeled axes, consistent blue bars, and
+side-by-side charts beneath the trend. All nine mouse-hover dollar/cents amounts
+matched independent CSV sums using the standard-library CSV reader and Decimal.
+Both breakdown totals reconcile to `$116,500.21`. The existing KPI cards and
+12-point monthly trend remain visible, with no app error or warning elements.
+These checks, together with the loader and aggregation tests, satisfy M2's
+loading, aggregation, and layout criteria. The source CSV is unchanged.
+The local server and temporary browser were stopped after verification. Starting
+the server required approval to open its local port; Streamlit printed its optional
+Watchdog performance suggestion. Stopped before Task 6 for review.
 
 ## M6 — Testing and refinement
 
