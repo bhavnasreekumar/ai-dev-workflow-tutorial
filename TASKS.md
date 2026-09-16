@@ -52,11 +52,11 @@ M2 remains **In progress**: Task 2 completes loading and validation only.
 Task 3 adds sales totals, transaction counts, and KPI cards.
 The remaining time/category/region aggregations and charts depend on Tasks 4–5.
 
-## M3 — KPI cards implementation — In progress
+## M3 — KPI cards implementation — Done
 
-Commit:
+Commit: `121fa74` — M3: calculate and display sales KPIs
 
-- [ ] Display Total Sales (sum of `total_amount`) and Total Orders (transaction count) prominently, with currency formatting and thousands separators. **Acceptance: KPIs visible.**
+- [x] Display Total Sales (sum of `total_amount`) and Total Orders (transaction count) prominently, with currency formatting and thousands separators. **Acceptance: KPIs visible.**
 
 Task 3 verification (2026-09-16): the KPI test first failed because
 `calculate_kpis` did not exist. After implementation, `venv/bin/python -m pytest -q`
