@@ -69,11 +69,11 @@ The source CSV is unchanged. The local server and temporary browser were stopped
 The server required approval to open its local port and printed the optional
 Watchdog performance suggestion. Stopped before Task 4 for user review.
 
-## M4 — Sales trend chart — In progress
+## M4 — Sales trend chart — Done
 
-Commit:
+Commit: `daa61fa` — M4: add monthly sales trend
 
-- [ ] Show correctly aggregated daily or monthly sales in a line chart, with time and sales axes, clear labels, and tooltips showing exact values. **Acceptance: Trend chart works.**
+- [x] Show correctly aggregated daily or monthly sales in a line chart, with time and sales axes, clear labels, and tooltips showing exact values. **Acceptance: Trend chart works.**
 
 Task 4 verification (2026-09-16): the monthly test first failed because
 `monthly_sales` did not exist. After implementation, `venv/bin/python -m pytest -q`
