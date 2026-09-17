@@ -133,7 +133,7 @@ is disabled. Stopped before Task 7 for review.
 
 ## M7 — Deployment to Streamlit Community Cloud — In progress (handoff prepared)
 
-Commit:
+Commit: `e4d4e8a` — M7: document user deployment handoff (preparation only)
 
 - [ ] Deploy the dashboard to Streamlit Community Cloud with the required dependencies and CSV available.
 - [ ] Verify the public dashboard loads and its KPIs and charts work; record the shareable URL for stakeholder review.
