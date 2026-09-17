@@ -113,7 +113,7 @@ Watchdog performance suggestion. Stopped before Task 6 for review.
 
 ## M6 — Testing and refinement — In progress
 
-Commit:
+Commit: `4d662f8` — M6: verify dashboard acceptance and document results (remaining checks open)
 
 - [x] Verify every KPI and chart aggregation against calculations from the CSV. Sample expectations: 482 orders, approximately $116,500 in sales, Electronics as top category, five categories, and North/South/East/West regions. Use CSV calculations for exact values. **Acceptance: Data loads correctly.**
 - [x] Run the dashboard and resolve errors and warnings. **Acceptance: No errors.**
