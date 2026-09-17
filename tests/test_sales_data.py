@@ -1,4 +1,5 @@
 import csv
+from pathlib import Path
 
 import pandas as pd
 import pytest
@@ -121,3 +122,29 @@ def test_breakdowns_include_all_groups_and_sort_ties(column, function):
     assert result[column].tolist() == ["Zeta", "Alpha", "Beta"]
     assert result["total_amount"].tolist() == [20.0, 10.0, 10.0]
     assert result["total_amount"].sum() == pytest.approx(40.0, abs=0.001)
+
+
+def test_supplied_csv_matches_known_results():
+    path = Path(__file__).resolve().parents[1] / "data" / "sales-data.csv"
+    data = load_sales_data(path)
+    sales, orders = calculate_kpis(data)
+    assert orders == 482
+    assert sales == pytest.approx(116500.21, rel=0, abs=0.001)
+    assert data["date"].min() == pd.Timestamp("2024-01-03")
+    assert data["date"].max() == pd.Timestamp("2024-12-31")
+    categories = sales_by_category(data)
+    regions = sales_by_region(data)
+    assert categories["category"].tolist() == [
+        "Electronics", "Wearables", "Audio", "Smart Home", "Accessories",
+    ]
+    assert categories["total_amount"].tolist() == pytest.approx(
+        [42683.67, 23698.23, 19638.44, 19317.23, 11162.64], rel=0, abs=0.001,
+    )
+    assert regions["region"].tolist() == ["North", "West", "East", "South"]
+    assert regions["total_amount"].tolist() == pytest.approx(
+        [38857.24, 27463.74, 26783.53, 23395.70], rel=0, abs=0.001,
+    )
+    trend = monthly_sales(data)
+    assert len(trend) == 12
+    for totals in [categories, regions, trend]:
+        assert totals["total_amount"].sum() == pytest.approx(sales, rel=0, abs=0.001)

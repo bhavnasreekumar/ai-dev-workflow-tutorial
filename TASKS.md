@@ -111,16 +111,25 @@ The local server and temporary browser were stopped after verification. Starting
 the server required approval to open its local port; Streamlit printed its optional
 Watchdog performance suggestion. Stopped before Task 6 for review.
 
-## M6 — Testing and refinement
+## M6 — Testing and refinement — In progress
 
 Commit:
 
-- [ ] Verify every KPI and chart aggregation against calculations from the CSV. Sample expectations: 482 orders, approximately $116,500 in sales, Electronics as top category, five categories, and North/South/East/West regions. Use CSV calculations for exact values. **Acceptance: Data loads correctly.**
-- [ ] Run the dashboard and resolve errors and warnings. **Acceptance: No errors.**
-- [ ] Review labels, formatting, and layout for clear, training-free usage and executive presentation. **Acceptance: Professional appearance.**
+- [x] Verify every KPI and chart aggregation against calculations from the CSV. Sample expectations: 482 orders, approximately $116,500 in sales, Electronics as top category, five categories, and North/South/East/West regions. Use CSV calculations for exact values. **Acceptance: Data loads correctly.**
+- [x] Run the dashboard and resolve errors and warnings. **Acceptance: No errors.**
+- [x] Review labels, formatting, and layout for clear, training-free usage and executive presentation. **Acceptance: Professional appearance.**
 - [ ] Verify dashboard load within 5 seconds and chart rendering within 2 seconds of data load.
 - [ ] Check Chrome, Firefox, Safari, and Edge compatibility without end-user plugins or installations.
-- [ ] Review code for readable, modular Python and helpful comments.
+- [x] Review code for readable, modular Python and helpful comments.
+
+Task 6 evidence: [verification record](docs/verification/sales-dashboard.md).
+23 tests pass with warnings treated as errors; dependencies are compatible.
+Both error paths stop before results. Chrome functional and desktop appearance
+checks pass. The first painted load meets both timing targets; warm-load readiness
+measurements remain provisional because trace images did not reliably confirm paint.
+M6 stays **In progress** pending complete performance recordings and Firefox,
+Safari, and Edge checks. Firefox/Edge are unavailable here; Safari automation
+is disabled. Stopped before Task 7 for review.
 
 ## M7 — Deployment to Streamlit Community Cloud
 

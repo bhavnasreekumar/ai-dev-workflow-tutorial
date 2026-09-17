@@ -121,15 +121,34 @@ python3 -m venv venv
 source venv/bin/activate
 python -m pip install -r requirements.txt
 streamlit run app.py
-# Once tests exist:
-python -m pytest -q
+python -m pytest -q -W error
 ```
 
 On Windows, replace the activation command with `venv\Scripts\activate`.
 Open the local URL printed by Streamlit. Press Ctrl+C in the terminal to stop the server.
 
-The app currently shows its title only: **ShopSmart Sales Dashboard**.
-Test files arrive in M2; there are no project tests to run yet.
+**ShopSmart Sales Dashboard** shows Total Sales and Total Orders, a monthly
+sales trend, and category and region charts side by side. Hover over chart
+points or bars to see exact dollar amounts. The supplied snapshot contains
+482 transactions and $116,500.21 in sales from January 3–December 31, 2024.
+
+The app reads `data/sales-data.csv` relative to `app.py`. Required columns are
+`date`, `order_id`, `product`, `category`, `region`, `quantity`, `unit_price`,
+and `total_amount`. Dates must use `YYYY-MM-DD`; quantity must be a finite
+whole number, and prices and amounts must be finite numbers. Required cells
+cannot be blank. IDs remain text, and extra columns are ignored.
+
+Missing, empty, malformed, or invalid CSV input displays a clear error and
+stops the app before any metrics or charts appear. Invalid rows are never
+silently dropped. Sales use the recorded `total_amount`; orders count
+transaction rows, including repeated IDs. Monthly totals keep years separate
+and fill intervening months without sales with zero. Breakdown bars are sorted
+by descending sales, with alphabetical ties.
+
+This is a static data snapshot with no automatic refresh or date filters.
+The tests cover validation and calculations, including the supplied CSV.
+See the [verification record](docs/verification/sales-dashboard.md) for measured
+results and outstanding browser and performance checks.
 
 Task 1 environment: Python 3.14.7, Streamlit 1.64.0, Pandas 3.0.5,
 Plotly 6.9.0, and pytest 9.1.1. These four package versions are pinned in
