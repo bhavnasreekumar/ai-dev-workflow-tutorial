@@ -131,6 +131,11 @@ M6 stays **In progress** pending complete performance recordings and Firefox,
 Safari, and Edge checks. Firefox/Edge are unavailable here; Safari automation
 is disabled. Stopped before Task 7 for review.
 
+User review on 2026-09-17: the dashboard rendered correctly in Google Chrome,
+including Total Sales, Total Orders, monthly trend, category sales, and region
+sales. The user explicitly approved the dashboard. This confirms the Chrome
+visual review; other-browser and measured-performance checks remain open.
+
 ## M7 — Deployment to Streamlit Community Cloud — In progress (handoff prepared)
 
 Commit: `e4d4e8a` — M7: document user deployment handoff (preparation only)
@@ -148,12 +153,19 @@ environment, test caches, `.env`, or Streamlit secrets file is committed;
 their ignore rules are effective.
 
 `sales_data.py` owns validation and calculations; `app.py` owns presentation
-and error display. User review is still pending. M6's Firefox/Safari/Edge and
+and error display. The user approved the rendered dashboard in Chrome on
+2026-09-17. M6's Firefox/Safari/Edge and
 complete painted-frame timing checks remain open. The handoff documentation is
 ready for review, but deployment readiness is conditional on completing those
 checks and the user's review/merge/push workflow. No merge, push, or deployment
 was performed. After that workflow, verify the reviewed implementation on
 remote `main` before Task 8. Stopped before user-executed deployment.
+
+Read-only GitHub check on 2026-09-17: remote `main` is
+`06d88f522926f227d1de1234ba938fe0d22e14d8`; the dashboard implementation is
+not present there, and no remote `feature/sales-dashboard` branch was returned.
+The earlier instruction not to merge or push remains pending explicit release
+direction; no merge, push, or deployment was performed during the review update.
 
 Public URL:
 

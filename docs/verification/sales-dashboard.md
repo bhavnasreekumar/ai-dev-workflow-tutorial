@@ -3,7 +3,16 @@
 Task 6 / M6. Checks performed September 16–17, 2026, America/Los_Angeles.
 Application under review: `bd81731`; Task 6 adds a regression test and documentation.
 M6 remains **In progress**. Firefox, Safari, Edge, and complete painted-frame
-performance verification remain outstanding. Task 7 has not started.
+performance verification remain outstanding. Task 7's handoff documentation
+is prepared; the user approved the rendered dashboard in Chrome on September 17.
+
+## User review
+
+On September 17, 2026, the user confirmed that Total Sales, Total Orders,
+the monthly trend, sales by category, and sales by region rendered correctly
+in Google Chrome and explicitly approved the dashboard. This is a user-reported
+visual acceptance result; the user did not report a browser version, measured
+load times, or results in other browsers. Those outstanding checks remain open.
 
 ## Environment and automated checks
 
@@ -62,6 +71,7 @@ Sandbox approval was needed for local server/browser connections.
 | Browser/version | Date | Outcome |
 | --- | --- | --- |
 | Chrome 153.0.8010.47, headless | Sept 16–17 | Functional checks passed using an isolated temporary profile, with no extensions; layout and hover evidence above. |
+| Google Chrome, user session (version not reported) | Sept 17 | User confirmed all dashboard sections rendered correctly and approved the dashboard. |
 | Firefox, version unavailable | Sept 16 | Not installed in `/Applications`; outstanding. |
 | Safari 16.5 | Sept 16 | Driver refused to create a session because Develop → Allow Remote Automation is disabled; outstanding. Browser settings were not changed. |
 | Edge, version unavailable | Sept 16 | Not installed in `/Applications`; outstanding. |
@@ -119,4 +129,5 @@ error-class docstring explain the current code; no additional comments or
 production changes were needed. `git diff -- data/sales-data.csv` is empty.
 
 Outstanding: Firefox/Safari/Edge compatibility and three fully confirmed
-painted-frame performance recordings. M6 stays open; M7/deployment are untouched.
+painted-frame performance recordings. M6 stays open. M7 handoff documentation
+is prepared, and the user's Chrome approval is recorded; deployment has not occurred.
