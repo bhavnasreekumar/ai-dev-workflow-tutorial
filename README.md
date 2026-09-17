@@ -153,3 +153,42 @@ results and outstanding browser and performance checks.
 Task 1 environment: Python 3.14.7, Streamlit 1.64.0, Pandas 3.0.5,
 Plotly 6.9.0, and pytest 9.1.1. These four package versions are pinned in
 `requirements.txt`; `python -m pip check` reported no broken requirements.
+
+## Review and deploy the sales dashboard
+
+Deployment is the user-executed final step. Before deploying, finish M6's
+outstanding browser and painted-frame performance checks in the
+[verification record](docs/verification/sales-dashboard.md). Review the branch
+changes with `git diff main...HEAD`, then follow the tutorial's
+[review, merge, and push workflow](workshop-build-deploy.md). The deployment
+handoff does not mean those checks or your review have been completed.
+
+For code review, `sales_data.py` validates the CSV and computes the summaries;
+`app.py` handles layout, chart formatting, and error messages. The tests check
+the data rules and known sample results independently of the UI.
+
+After merging and pushing the reviewed changes, confirm GitHub's `main` branch
+contains `app.py`, `sales_data.py`, `requirements.txt`, and `data/sales-data.csv`,
+and record the reviewed commit. The dependency file and CSV must be committed;
+the local `venv/` is not deployed. Remote `main` has not yet been verified to
+contain this implementation.
+
+Use the [official Streamlit deployment guide](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy):
+
+1. Sign in to [Streamlit Community Cloud](https://share.streamlit.io/) with access
+   to your GitHub repository, choose **Create app**, and choose your existing app.
+2. Select repository `bhavnasreekumar/ai-dev-workflow-tutorial`, branch `main`,
+   and entry point `app.py`.
+3. In **Advanced settings**, choose Python **3.14**, matching the locally tested
+   Python 3.14.7 major/minor version. If 3.14 is unavailable, test the pinned
+   dependencies and app locally on an offered supported version before using it.
+4. Deploy and inspect the build/runtime logs. Confirm dependency installation
+   succeeds and the app reads the committed CSV.
+5. Open the public URL in a private/logged-out browser window. Verify
+   `$116,500.21`, `482` orders, twelve monthly points, five categories, four
+   regions, descending bars, and working dollar/cents tooltips. Resolve errors
+   before considering deployment complete.
+6. Record the public URL, deployed Git commit, selected Python runtime, and
+   hosted startup observations under M7 in [TASKS.md](TASKS.md). Keep hosted
+   timings separate from local measurements. Then check M7's completed criteria
+   and commit/push that board update through the tutorial workflow.

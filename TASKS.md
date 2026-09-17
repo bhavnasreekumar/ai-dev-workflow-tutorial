@@ -131,12 +131,37 @@ M6 stays **In progress** pending complete performance recordings and Firefox,
 Safari, and Edge checks. Firefox/Edge are unavailable here; Safari automation
 is disabled. Stopped before Task 7 for review.
 
-## M7 — Deployment to Streamlit Community Cloud
+## M7 — Deployment to Streamlit Community Cloud — In progress (handoff prepared)
 
 Commit:
 
 - [ ] Deploy the dashboard to Streamlit Community Cloud with the required dependencies and CSV available.
 - [ ] Verify the public dashboard loads and its KPIs and charts work; record the shareable URL for stakeholder review.
+
+Task 7 handoff prepared on 2026-09-17:
+[review and deployment instructions](README.md#review-and-deploy-the-sales-dashboard).
+Reviewed `git diff main...HEAD` and M1–M6 evidence. The base branch is `main`.
+No new code defect was identified; all 23 tests pass with warnings treated as
+errors, `pip check` reports no conflicts, and the branch diff passes whitespace
+checks. The CSV is unchanged. Tracked-file inspection confirmed no virtual
+environment, test caches, `.env`, or Streamlit secrets file is committed;
+their ignore rules are effective.
+
+`sales_data.py` owns validation and calculations; `app.py` owns presentation
+and error display. User review is still pending. M6's Firefox/Safari/Edge and
+complete painted-frame timing checks remain open. The handoff documentation is
+ready for review, but deployment readiness is conditional on completing those
+checks and the user's review/merge/push workflow. No merge, push, or deployment
+was performed. After that workflow, verify the reviewed implementation on
+remote `main` before Task 8. Stopped before user-executed deployment.
+
+Public URL:
+
+Deployed Git commit:
+
+Hosted Python runtime:
+
+Hosted startup/performance observations:
 
 ## Out of scope
 
