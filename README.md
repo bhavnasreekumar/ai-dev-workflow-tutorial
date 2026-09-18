@@ -170,8 +170,11 @@ the data rules and known sample results independently of the UI.
 After merging and pushing the reviewed changes, confirm GitHub's `main` branch
 contains `app.py`, `sales_data.py`, `requirements.txt`, and `data/sales-data.csv`,
 and record the reviewed commit. The dependency file and CSV must be committed;
-the local `venv/` is not deployed. Remote `main` has not yet been verified to
-contain this implementation.
+the local `venv/` is not deployed. On September 17, 2026, the user authorized
+merge and push while retaining the documented M6 limitations. The approved
+dashboard was fast-forwarded into `main`, and remote `main` was verified at
+`f5826f5d28c8675447826f6580cf3e2cd86a3ede`. Deployment remains pending separate
+user approval; this merge authorization does not close M6's outstanding checks.
 
 Use the [official Streamlit deployment guide](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy):
 

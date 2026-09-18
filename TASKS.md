@@ -164,8 +164,18 @@ remote `main` before Task 8. Stopped before user-executed deployment.
 Read-only GitHub check on 2026-09-17: remote `main` is
 `06d88f522926f227d1de1234ba938fe0d22e14d8`; the dashboard implementation is
 not present there, and no remote `feature/sales-dashboard` branch was returned.
-The earlier instruction not to merge or push remains pending explicit release
-direction; no merge, push, or deployment was performed during the review update.
+At that review checkpoint, merge/push authorization was still pending.
+
+Merge/push update on 2026-09-17: the user explicitly authorized merging and
+pushing while retaining the browser and performance limitations. After fetching
+GitHub's latest state, `main` was fast-forwarded to `feature/sales-dashboard`
+at `f5826f5d28c8675447826f6580cf3e2cd86a3ede`. All 23 tests passed on the merged
+result with warnings treated as errors, and `pip check` found no conflicts.
+The push succeeded; `git ls-remote origin refs/heads/main` confirmed that exact
+commit on GitHub, satisfying the remote-implementation check before Task 8.
+M6 remains open. Deployment has not been performed and requires a separate
+user approval, followed by the user-executed steps in the README. The feature
+branch is retained locally as a review reference.
 
 Public URL:
 
