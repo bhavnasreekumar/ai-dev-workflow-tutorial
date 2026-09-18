@@ -12,6 +12,10 @@ A milestone is complete when its acceptance criteria are met, the app runs local
 
 Commit: `6e79b35` — M1: set up runnable Streamlit project
 
+Notes: Installation and dependency checks passed; the local Streamlit server
+and headless Chrome health check confirmed the rendered dashboard title and
+heading without app errors or warnings.
+
 - [x] Set up Python 3.11+ with Streamlit, Pandas, and Plotly; record dependencies and local run instructions.
 - [x] Initialize a simple, readable project structure with a Streamlit entry point.
 
@@ -34,6 +38,9 @@ the heading and absence of app alerts were verified from the rendered DOM.
 ## M2 — Data loading and basic structure — Done
 
 Commit: `bd81731` — M5 M2: complete breakdown charts and dashboard structure
+
+Notes: The loader and dashboard structure passed 18 tests; Chrome confirmed the
+date caption and no app errors or warnings, and the source CSV remained unchanged.
 
 Earlier loading commit: `27cac03` — M2: load and validate sales CSV
 
@@ -59,6 +66,9 @@ Task 5 adds category/region aggregations and charts, completing the required str
 
 Commit: `121fa74` — M3: calculate and display sales KPIs
 
+Notes: The KPI checks passed 19 tests; Chrome confirmed Total Sales of
+`$116,500.21` and Total Orders of `482` in side-by-side cards.
+
 - [x] Display Total Sales (sum of `total_amount`) and Total Orders (transaction count) prominently, with currency formatting and thousands separators. **Acceptance: KPIs visible.**
 
 Task 3 verification (2026-09-16): the KPI test first failed because
@@ -74,6 +84,9 @@ Watchdog performance suggestion. Stopped before Task 4 for user review.
 ## M4 — Sales trend chart — Done
 
 Commit: `daa61fa` — M4: add monthly sales trend
+
+Notes: The trend checks passed 20 tests; Chrome confirmed 12 chronological
+monthly points, labeled axes, and hover values matching independent CSV sums.
 
 - [x] Show correctly aggregated daily or monthly sales in a line chart, with time and sales axes, clear labels, and tooltips showing exact values. **Acceptance: Trend chart works.**
 
@@ -92,6 +105,10 @@ the optional Watchdog performance suggestion. Stopped before Task 5 for review.
 ## M5 — Category and region breakdowns — Done
 
 Commit: `bd81731` — M5 M2: complete breakdown charts and dashboard structure
+
+Notes: The breakdown checks passed 22 tests; Chrome confirmed five categories,
+four regions, descending order, exact hover values, and totals reconciling to
+`$116,500.21`.
 
 - [x] Show every category in a sales bar chart, sorted highest to lowest, with clear labels and exact-value tooltips. **Acceptance: Category chart works.**
 - [x] Show every region in a sales bar chart, sorted highest to lowest, with clear labels and exact-value tooltips. **Acceptance: Region chart works.**
@@ -139,6 +156,9 @@ visual review; all M6 acceptance checks are complete.
 ## M7 — Deployment to Streamlit Community Cloud — Done
 
 Commit: `e4d4e8a` — M7: document user deployment handoff (preparation only)
+
+Notes: The user-reported deployment verification confirmed the public dashboard
+in Chrome with `$116,500.21`, `482` orders, five categories, and four regions.
 
 - [x] Deploy the dashboard to Streamlit Community Cloud with the required dependencies and CSV available.
 - [x] Verify the public dashboard loads and its KPIs and charts work; record the shareable URL for stakeholder review.
