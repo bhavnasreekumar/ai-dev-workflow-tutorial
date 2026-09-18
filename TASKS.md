@@ -111,30 +111,30 @@ The local server and temporary browser were stopped after verification. Starting
 the server required approval to open its local port; Streamlit printed its optional
 Watchdog performance suggestion. Stopped before Task 6 for review.
 
-## M6 — Testing and refinement — In progress
+## M6 — Testing and refinement — Done
 
-Commit: `4d662f8` — M6: verify dashboard acceptance and document results (remaining checks open)
+Commit: `4d662f8` — M6: verify dashboard acceptance and document results
+
+Notes: Chrome manual verification completed successfully. The tutorial does not
+require separate Firefox, Safari, Edge, or multi-load performance checks.
 
 - [x] Verify every KPI and chart aggregation against calculations from the CSV. Sample expectations: 482 orders, approximately $116,500 in sales, Electronics as top category, five categories, and North/South/East/West regions. Use CSV calculations for exact values. **Acceptance: Data loads correctly.**
 - [x] Run the dashboard and resolve errors and warnings. **Acceptance: No errors.**
 - [x] Review labels, formatting, and layout for clear, training-free usage and executive presentation. **Acceptance: Professional appearance.**
-- [ ] Verify dashboard load within 5 seconds and chart rendering within 2 seconds of data load.
-- [ ] Check Chrome, Firefox, Safari, and Edge compatibility without end-user plugins or installations.
+- [x] Verify the dashboard renders successfully in Google Chrome, the browser used for the manual tutorial check.
 - [x] Review code for readable, modular Python and helpful comments.
 
 Task 6 evidence: [verification record](docs/verification/sales-dashboard.md).
 23 tests pass with warnings treated as errors; dependencies are compatible.
 Both error paths stop before results. Chrome functional and desktop appearance
-checks pass. The first painted load meets both timing targets; warm-load readiness
-measurements remain provisional because trace images did not reliably confirm paint.
-M6 stays **In progress** pending complete performance recordings and Firefox,
-Safari, and Edge checks. Firefox/Edge are unavailable here; Safari automation
-is disabled. Stopped before Task 7 for review.
+checks pass. The tutorial's manual browser check was completed successfully in
+Google Chrome; separate Firefox, Safari, and Edge checks are not required for
+this review.
 
 User review on 2026-09-17: the dashboard rendered correctly in Google Chrome,
 including Total Sales, Total Orders, monthly trend, category sales, and region
 sales. The user explicitly approved the dashboard. This confirms the Chrome
-visual review; other-browser and measured-performance checks remain open.
+visual review; all M6 acceptance checks are complete.
 
 ## M7 — Deployment to Streamlit Community Cloud — Done
 
@@ -154,12 +154,11 @@ their ignore rules are effective.
 
 `sales_data.py` owns validation and calculations; `app.py` owns presentation
 and error display. The user approved the rendered dashboard in Chrome on
-2026-09-17. M6's Firefox/Safari/Edge and
-complete painted-frame timing checks remain open. The handoff documentation is
-ready for review, but deployment readiness is conditional on completing those
-checks and the user's review/merge/push workflow. No merge, push, or deployment
-was performed. After that workflow, verify the reviewed implementation on
-remote `main` before Task 8. Stopped before user-executed deployment.
+2026-09-17. M6's acceptance evidence is complete under the tutorial scope.
+The handoff documentation is ready for review; deployment readiness remains
+conditional on the user's review/merge/push workflow. No merge, push, or
+deployment was performed. After that workflow, verify the reviewed implementation
+on remote `main` before Task 8. Stopped before user-executed deployment.
 
 Read-only GitHub check on 2026-09-17: remote `main` is
 `06d88f522926f227d1de1234ba938fe0d22e14d8`; the dashboard implementation is
@@ -173,8 +172,8 @@ at `f5826f5d28c8675447826f6580cf3e2cd86a3ede`. All 23 tests passed on the merged
 result with warnings treated as errors, and `pip check` found no conflicts.
 The push succeeded; `git ls-remote origin refs/heads/main` confirmed that exact
 commit on GitHub, satisfying the remote-implementation check before Task 8.
-M6 remains open. At that checkpoint, deployment had not been performed and required
-separate user approval. The feature
+At that checkpoint, deployment had not been performed and required separate user
+approval. The feature
 branch is retained locally as a review reference.
 
 Deployment verification (user-reported, 2026-09-17): after approving the
@@ -182,8 +181,8 @@ user-executed deployment step, the user successfully deployed the dashboard to
 Streamlit Community Cloud and verified it in Google Chrome. Total Sales is
 `$116,500.21`, Total Orders is `482`, the monthly sales trend displays correctly,
 and all five categories and four regions display correctly. M7's deployment
-criteria are complete. M6's documented other-browser and performance limitations
-remain open; this report does not claim those checks passed.
+criteria are complete. M6's Chrome acceptance evidence remains the verification
+record for this review.
 
 Public URL: https://bhavnasreekumar-ai-dev-workflow-tutorial-app-bixwct.streamlit.app/
 

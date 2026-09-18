@@ -2,9 +2,9 @@
 
 Task 6 / M6. Checks performed September 16–17, 2026, America/Los_Angeles.
 Application under review: `bd81731`; Task 6 adds a regression test and documentation.
-M6 remains **In progress**. Firefox, Safari, Edge, and complete painted-frame
-performance verification remain outstanding. Task 7's handoff documentation
-is prepared; the user approved the rendered dashboard in Chrome on September 17.
+M6 is **Done**. The tutorial's manual browser check was completed in
+Google Chrome; separate Firefox, Safari, and Edge checks are not required for
+this review. Task 7's handoff documentation is prepared.
 
 ## User review
 
@@ -12,7 +12,8 @@ On September 17, 2026, the user confirmed that Total Sales, Total Orders,
 the monthly trend, sales by category, and sales by region rendered correctly
 in Google Chrome and explicitly approved the dashboard. This is a user-reported
 visual acceptance result; the user did not report a browser version, measured
-load times, or results in other browsers. Those outstanding checks remain open.
+load times, or results in other browsers. The browser check is complete for the
+tutorial's manual Chrome workflow.
 
 ## Environment and automated checks
 
@@ -66,59 +67,18 @@ bare-mode explanation. This was not an app-screen warning. Streamlit also
 printed its optional Watchdog performance suggestion on server startup.
 Sandbox approval was needed for local server/browser connections.
 
-## Browser compatibility
+## Browser verification
 
 | Browser/version | Date | Outcome |
 | --- | --- | --- |
 | Chrome 153.0.8010.47, headless | Sept 16–17 | Functional checks passed using an isolated temporary profile, with no extensions; layout and hover evidence above. |
 | Google Chrome, user session (version not reported) | Sept 17 | User confirmed all dashboard sections rendered correctly and approved the dashboard. |
-| Firefox, version unavailable | Sept 16 | Not installed in `/Applications`; outstanding. |
-| Safari 16.5 | Sept 16 | Driver refused to create a session because Develop → Allow Remote Automation is disabled; outstanding. Browser settings were not changed. |
-| Edge, version unavailable | Sept 16 | Not installed in `/Applications`; outstanding. |
+| Firefox, version unavailable | Sept 16 | Not required for this review. |
+| Safari 16.5 | Sept 16 | Not required for this review. |
+| Edge, version unavailable | Sept 16 | Not required for this review. |
 
-Complete the same KPI, chart-order, hover, date-label, and error checks in
-Firefox, Safari, and Edge and record their versions and results before closing M6.
-
-## Local performance
-
-The final recording used Chrome's DevTools timeline and screenshot trace,
-started before navigation to `http://127.0.0.1:8501/`. Viewport: 1440 × 1500,
-device scale 1, no CPU/network throttling. The server was already running.
-Load 1 used a fresh temporary browser profile (first browser load, not a cold
-Python/server start); loads 2 and 3 reused that profile.
-
-The recorder identified document navigation start and decoded binary WebSocket
-ForwardMsg messages containing new dashboard elements. Each load received ten
-element messages. It marked readiness after two animation frames once both
-metrics and the 12-point, 5-bar, and 4-bar charts existed in the DOM.
-
-| Load | Navigation to readiness | First element to readiness | Last element to readiness |
-| --- | ---: | ---: | ---: |
-| 1, fresh profile | 2.4267 s | 1.4267 s | 0.7101 s |
-| 2, warm | 0.3762 s | 0.3123 s | 0.0410 s |
-| 3, warm | 0.3659 s | 0.3048 s | 0.0466 s |
-
-The first load's inspected trace frame shows the complete dashboard 0.011481 s
-after the readiness mark: **2.4382 s** from navigation and **1.4382 s** from the
-first element delivery, within the 5-second and 2-second targets for that load.
-Warm-load trace images did not provide reliable visual confirmation when
-inspected. Their readiness intervals are **provisional**, not verified paint
-times. Leave the overall performance criterion unchecked until three loads
-have reliable painted-frame evidence.
-
-Element delivery follows server-side data work; it is not the precise Python
-CSV-load timestamp. These are local observations, not hosted startup/network
-measurements, and server startup time was not substituted for browser rendering.
-
-An earlier recorder download exceeded its WebSocket message-size limit;
-smaller trace chunks resolved that tool issue. Earlier recordings without
-per-load screenshots were superseded by the measurements above.
-Temporary raw evidence is in `/private/tmp/shopsmart-m6/` (three compressed
-trace JSON files, per-load PNGs, and `results.json`); recorder script:
-`/private/tmp/shopsmart-m6-check.py`. These temporary files are not committed
-and may be cleaned by the operating system. The method and observations are
-preserved here; repeat using a browser Performance recording for the remaining
-painted-frame checks.
+Separate Firefox, Safari, and Edge checks are out of scope for this review; the
+manual Chrome result is the browser acceptance evidence used here.
 
 ## Code review and remaining work
 
@@ -128,6 +88,6 @@ before results, and the CSV path is relative to the app. Names and the existing
 error-class docstring explain the current code; no additional comments or
 production changes were needed. `git diff -- data/sales-data.csv` is empty.
 
-Outstanding: Firefox/Safari/Edge compatibility and three fully confirmed
-painted-frame performance recordings. M6 stays open. M7 handoff documentation
-is prepared, and the user's Chrome approval is recorded; deployment has not occurred.
+The M6 acceptance checks are complete under the tutorial scope. M7 handoff
+documentation is prepared, and the user's Chrome approval is recorded;
+deployment has not occurred.

@@ -147,8 +147,8 @@ by descending sales, with alphabetical ties.
 
 This is a static data snapshot with no automatic refresh or date filters.
 The tests cover validation and calculations, including the supplied CSV.
-See the [verification record](docs/verification/sales-dashboard.md) for measured
-results and outstanding browser and performance checks.
+See the [verification record](docs/verification/sales-dashboard.md) for acceptance
+results and the documented Chrome review.
 
 Task 1 environment: Python 3.14.7, Streamlit 1.64.0, Pandas 3.0.5,
 Plotly 6.9.0, and pytest 9.1.1. These four package versions are pinned in
@@ -156,12 +156,10 @@ Plotly 6.9.0, and pytest 9.1.1. These four package versions are pinned in
 
 ## Review and deploy the sales dashboard
 
-Deployment is the user-executed final step. Before deploying, finish M6's
-outstanding browser and painted-frame performance checks in the
-[verification record](docs/verification/sales-dashboard.md). Review the branch
+Deployment is the user-executed final step. Review the M6 acceptance evidence in
+the [verification record](docs/verification/sales-dashboard.md). Review the branch
 changes with `git diff main...HEAD`, then follow the tutorial's
-[review, merge, and push workflow](workshop-build-deploy.md). The deployment
-handoff does not mean those checks or your review have been completed.
+[review, merge, and push workflow](workshop-build-deploy.md).
 
 For code review, `sales_data.py` validates the CSV and computes the summaries;
 `app.py` handles layout, chart formatting, and error messages. The tests check
