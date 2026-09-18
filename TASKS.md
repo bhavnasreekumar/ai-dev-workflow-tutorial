@@ -136,12 +136,12 @@ including Total Sales, Total Orders, monthly trend, category sales, and region
 sales. The user explicitly approved the dashboard. This confirms the Chrome
 visual review; other-browser and measured-performance checks remain open.
 
-## M7 — Deployment to Streamlit Community Cloud — In progress (handoff prepared)
+## M7 — Deployment to Streamlit Community Cloud — Done
 
 Commit: `e4d4e8a` — M7: document user deployment handoff (preparation only)
 
-- [ ] Deploy the dashboard to Streamlit Community Cloud with the required dependencies and CSV available.
-- [ ] Verify the public dashboard loads and its KPIs and charts work; record the shareable URL for stakeholder review.
+- [x] Deploy the dashboard to Streamlit Community Cloud with the required dependencies and CSV available.
+- [x] Verify the public dashboard loads and its KPIs and charts work; record the shareable URL for stakeholder review.
 
 Task 7 handoff prepared on 2026-09-17:
 [review and deployment instructions](README.md#review-and-deploy-the-sales-dashboard).
@@ -173,17 +173,26 @@ at `f5826f5d28c8675447826f6580cf3e2cd86a3ede`. All 23 tests passed on the merged
 result with warnings treated as errors, and `pip check` found no conflicts.
 The push succeeded; `git ls-remote origin refs/heads/main` confirmed that exact
 commit on GitHub, satisfying the remote-implementation check before Task 8.
-M6 remains open. Deployment has not been performed and requires a separate
-user approval, followed by the user-executed steps in the README. The feature
+M6 remains open. At that checkpoint, deployment had not been performed and required
+separate user approval. The feature
 branch is retained locally as a review reference.
 
-Public URL:
+Deployment verification (user-reported, 2026-09-17): after approving the
+user-executed deployment step, the user successfully deployed the dashboard to
+Streamlit Community Cloud and verified it in Google Chrome. Total Sales is
+`$116,500.21`, Total Orders is `482`, the monthly sales trend displays correctly,
+and all five categories and four regions display correctly. M7's deployment
+criteria are complete. M6's documented other-browser and performance limitations
+remain open; this report does not claim those checks passed.
 
-Deployed Git commit:
+Public URL: https://bhavnasreekumar-ai-dev-workflow-tutorial-app-bixwct.streamlit.app/
 
-Hosted Python runtime:
+Deployed Git commit: Not reported in the deployment confirmation.
 
-Hosted startup/performance observations:
+Hosted Python runtime: Not reported in the deployment confirmation.
+
+Hosted startup/performance observations: Deployment succeeded and the dashboard
+rendered correctly in Chrome, as reported by the user. No measured timings were provided.
 
 ## Out of scope
 
